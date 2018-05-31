@@ -2,8 +2,9 @@ ip: 192.168.20.20
 memory: 2048
 cpus: 2
 provider: virtualbox
-authorize: ~/.ssh/id_rsa.pub
 mariadb: true
+
+authorize: ~/.ssh/id_rsa.pub
 
 keys:
     - ~/.ssh/id_rsa
