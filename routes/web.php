@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+
+# TODO create admin interfaces
+Route::get('/admin', 'AdminController@index')->name('admin');
+
+
+
