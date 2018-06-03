@@ -32,19 +32,10 @@ class MediaStorage
      * @return MediaStorage\Files|bool
      * @throws \Exception
      */
-    public function create(UploadedFile $upload_file, $description = null, $email = null)
+    public function create(UploadedFile $upload_file, $uuid, $description = null, $email = null)
     {
-        # TODO check data
-
-        /**
-         * @var $CookieUser \App\CookieUser
-         */
-        $CookieUser = app('\App\CookieUser');
-
-        Log::debug('MediaStorage::create / uuid='.print_r($CookieUser->uuid, true));
-
         # save file
-        $res = MediaStorage\FileStorage::save($upload_file, $CookieUser->uuid);
+        $res = MediaStorage\FileStorage::save($upload_file, $uuid);
 
         if($res instanceof SaveResult)
         {
@@ -53,7 +44,7 @@ class MediaStorage
             try {
 
                 $file = MediaStorage\Files::create([
-                    'user' => $CookieUser->uuid,
+                    'user' => $uuid,
                     'email' => $email,
                     'file' => $res->getFileHash(),
                     'ext' => $res->getFileExt(),

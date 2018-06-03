@@ -23,8 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('\App\CookieUser', function($app){
+        /*$this->app->singleton('\App\CookieUser', function($app){
             return new \App\CookieUser();
-        });
+        });*/
     }
 }

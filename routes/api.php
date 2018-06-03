@@ -18,4 +18,7 @@ Route::get('', function () {
     });
 
 Route::get('uploaded/{user_hash}/{file_hash}', 'API\MediaStorageController@get');
-Route::post('upload', 'API\MediaStorageController@upload');
+
+Route::middleware('msuser')->group(function () {
+    Route::post('upload', 'API\MediaStorageController@upload');
+});
