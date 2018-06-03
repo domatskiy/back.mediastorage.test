@@ -1,0 +1,14 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.table--mediastorage{
+    td {
+        small {
+            color: #cecece;
+        }
+    }
+}
