@@ -26,9 +26,14 @@ $ composer install
 $ vagrant up
 ```
 
-для подключения по ssh 
+подключимся по ssh 
 ```
 $ vagrant ssh
+```
+
+выполним миграции базы
+```
+$ php artisan migrate --seed
 ```
 
 для windows прописать в **c:\Windows\System32\drivers\etc\hosts** строку
@@ -37,5 +42,10 @@ $ vagrant ssh
 ```
 
 open http://back.mediastorage.test
+
+для доступа к редактированию использовать email и пароль:
+```
+admin@admin.ru | admin
+```
 
 for mail use http://localhost:8025
