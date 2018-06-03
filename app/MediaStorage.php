@@ -95,7 +95,7 @@ class MediaStorage
     /**
      * @return MediaStorage\Files|null
      */
-    public static function getFile($user_hash, $file_hash, $with_root)
+    public static function getFile($user_hash, $file_hash, $with_root = false)
     {
         $file = \App\MediaStorage\Files::select([
             'user',
