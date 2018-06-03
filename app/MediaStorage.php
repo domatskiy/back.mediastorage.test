@@ -95,18 +95,24 @@ class MediaStorage
     /**
      * @return MediaStorage\Files|null
      */
-    public static function getFile($user_hash, $file_hash)
+    public static function getFile($user_hash, $file_hash, $with_root)
     {
         $file = \App\MediaStorage\Files::select([
             'user',
-            'file'
+            'file',
+            'ext',
             ])
             ->where([
-                ['hash', $user_hash],
+                ['user', $user_hash],
                 ['file', $file_hash],
             ])
             ->first();
 
-        return $file;
+        if(!$file)
+            return null;
+
+        Log::debug('getFile:: file found, path = ' . $file->path);
+
+        return ($with_root ? storage_path('app').'/' : '') . $file->path;
     }
 }

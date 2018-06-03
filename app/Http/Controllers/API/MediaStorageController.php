@@ -43,13 +43,16 @@ class MediaStorageController extends App\Http\Controllers\Controller
     #GET
     public function get($user_hash, $file_hash, Request $request)
     {
-        $file = App\MediaStorage::getFile($user_hash, $file_hash);
+        $path = App\MediaStorage::getFile($user_hash, $file_hash, true);
 
-        if(!$file)
-            abort(404);
+        if(!$path)
+            return response([], 404);
 
-        # TODO download
-        # return response()->download($pathToFile);
+        Log::debug('file download '. $path);
+
+        # download
+        # return response()->file($path);
+        return response()->download($path);
     }
 
 }
