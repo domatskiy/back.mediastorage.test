@@ -45,14 +45,14 @@
                         <td>
                             <div class="btn-group btn-group-sm">
                                 <a class="btn btn-sm btn-dark" href="{{route('admin.edit', ['id' => $file->id])}}">Изменить</a>
-                                <form action="" method="POST">
+                                <!--<form action="{{route('admin.destroy', ['id' => $file->id])}}" method="POST">
                                     {{ csrf_field() }}
                                     <input name="_method" type="hidden" value="DELETE">
                                     <button
                                         class="btn btn-danger btn-sm"
                                         type="submit"
                                         onclick="confirm('Точно удалить?'); return false">Удалить</button>
-                                </form>
+                                </form>-->
                             </div>
                         </td>
                     </tr>

@@ -39,7 +39,7 @@ class Files extends Model
         parent::boot();
 
         static::deleting(function(Files $file) {
-            FileStorage::remove($file->user, $file->hash.$file->ext);
+            FileStorage::remove($file->user, $file->filename);
         });
     }
 

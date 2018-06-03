@@ -53,6 +53,8 @@ class FileStorage
             $fileStorage->deleteDir($dir);
         }
 
+        # TODO check parent dir, remove if empty
+
         return $res;
     }
 
@@ -72,7 +74,8 @@ class FileStorage
         #$file = static::$file;
         #$file_original = $file->getClientOriginalName();
 
-        $file_hash = md5_file($file->getPathname());
+        #$file_hash = md5_file($file->getPathname().time());
+        $file_hash = md5(time());
 
         $file_name = $file_hash. '.' . $file->getClientOriginalExtension();
 

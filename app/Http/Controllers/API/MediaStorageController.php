@@ -20,11 +20,15 @@ class MediaStorageController extends App\Http\Controllers\Controller
             Log::debug('save file');
 
             try {
+
                 $mediastorage = new App\MediaStorage;
-                $mediastorage->create($file, $request->get('sescription'), $request->get('email'));
+                $mediastorage->create($file, $request->get('uuid'), $request->get('description'), $request->get('email'));
+
             } catch (\Exception $e) {
+
                 $errors[] = $e->getMessage();
                 Log::error('save err '.$e->getMessage());
+                
             }
 
         }
