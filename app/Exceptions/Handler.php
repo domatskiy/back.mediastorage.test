@@ -46,6 +46,24 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if(strpos($request->path(), 'api/') === 0)
+        {
+
+            if($exception instanceof NotFoundHttpException)
+            {
+                return response('api: not found path', 404);
+            }
+            else
+            {
+
+            }
+        }
+        elseif(!$request->ajax())
+        {
+            if($exception instanceof NotFoundHttpException)
+                return response()->view('errors.404', [], 404);
+        }
+
         return parent::render($request, $exception);
     }
 }

@@ -13,8 +13,14 @@
 
 Auth::routes();
 
-# TODO create admin interfaces
-Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('', function () {
+   return view('index');
+});
+
+
+# admin interfaces
+Route::resource('admin', 'AdminController')
+    ->only(['index', 'edit', 'update', 'destroy']);
 
 
 

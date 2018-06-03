@@ -55,6 +55,16 @@ class RegisterController extends Controller
         ]);
     }
 
+    public function register(Request $request)
+    {
+        return redirect('/admin');
+    }
+
+    public function showRegistrationForm()
+    {
+        return redirect('/admin');
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -63,10 +73,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        /*return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+        ]);*/
     }
 }

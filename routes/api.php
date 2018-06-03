@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('upload', function () {
-    # TODO add api file post controller
-});
+Route::get('', function () {
+    return ['uploaded'];
+    });
+
+Route::get('uploaded/{user_hash}/{file_hash}', 'API\MediaStorageController@get');
+Route::post('upload', 'API\MediaStorageController@upload');

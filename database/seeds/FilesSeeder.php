@@ -16,29 +16,26 @@ class FilesSeeder extends Seeder
 
         $faker = Faker\Factory::create();
         $faker->addProvider(new Faker\Provider\en_US\Person($faker));
-        $faker->addProvider(new Faker\Provider\en_US\Address($faker));
-        $faker->addProvider(new Faker\Provider\en_US\Person($faker));
         $faker->addProvider(new Faker\Provider\Internet($faker));
         $faker->addProvider(new Faker\Provider\File($faker));
+        $faker->addProvider(new Faker\Provider\Uuid($faker));
 
         $need = 1000000;
         $count = 0;
 
         while($count < $need)
         {
-            $user = \App\MediaStorage\User::create([
-                'email' => $faker->freeEmail,
-                'hash' => '',
-                ]);
-
             $count_files = rand(1, 5);
+            $uuid = $faker->uuid;
 
             for ($k=0; $k < $count_files; $k++)
             {
                 \App\MediaStorage\Files::create([
-                    'storage_user_id' => $user->id,
-                    'file' => '',
-                    'description' => '',
+                    'email' => $faker->freeEmail,
+                    'user' => $uuid,
+                    'file' => md5(time().rand(100,1000000)),
+                    'ext' => 'jpg',
+                    'description' => 'test description of file',
                 ]);
 
                 $count++;

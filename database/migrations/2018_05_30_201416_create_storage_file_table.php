@@ -18,21 +18,17 @@ class CreateStorageFileTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->unsignedInteger('storage_user_id')->comment('Пользователь');
+            $table->string('user', 36)->comment('User');
             $table->string('file', 32)->comment('Файл');
+            $table->string('ext', 4)->nullable()->default('')->comment('Расширение');
+            $table->string('email', 50)->nullable()->default(null)->comment('Email');
             $table->string('description', 250)->nullable()->default(null)->comment('Описание');
             $table->timestamps();
 
             });
 
         Schema::table('media_storage_file', function($table){
-
-            $table->index('storage_user_id');
-
-            $table->foreign('storage_user_id')
-                ->references('id')->on('media_storage_user')
-                ->onDelete('cascade');
-
+            $table->index('user');
             });
     }
 
