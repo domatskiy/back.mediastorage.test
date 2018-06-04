@@ -1,14 +1,13 @@
-<?
-namespace App\Http\Controllers\API;
+<?php
 
-use \App;
+namespace App\Http\Controllers\Api;
+
 use \App\Http\Requests;
-use \Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class MediaStorageController extends App\Http\Controllers\Controller
+class MediaStorageController extends \App\Http\Controllers\Controller
 {
-
     #POST
     public function upload(Requests\API\MediaStorageAddRequest $request)
     {
@@ -21,14 +20,14 @@ class MediaStorageController extends App\Http\Controllers\Controller
 
             try {
 
-                $mediastorage = new App\MediaStorage;
+                $mediastorage = new \App\MediaStorage;
                 $mediastorage->create($file, $request->get('uuid'), $request->get('description'), $request->get('email'));
 
             } catch (\Exception $e) {
 
                 $errors[] = $e->getMessage();
                 Log::error('save err '.$e->getMessage());
-                
+
             }
 
         }
@@ -47,7 +46,7 @@ class MediaStorageController extends App\Http\Controllers\Controller
     #GET
     public function get($user_hash, $file_hash, Request $request)
     {
-        $path = App\MediaStorage::getFile($user_hash, $file_hash, true);
+        $path = \App\MediaStorage::getFile($user_hash, $file_hash, true);
 
         if(!$path)
             return response([], 404);
@@ -58,5 +57,4 @@ class MediaStorageController extends App\Http\Controllers\Controller
         # return response()->file($path);
         return response()->download($path);
     }
-
 }
