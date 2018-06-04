@@ -1,3 +1,7 @@
+php_value default_charset utf-8
+php_value upload_max_filesize 150M
+php_value post_max_size 150M
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         #Options -MultiViews -Indexes
@@ -19,5 +23,5 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
-php_value default_charset utf-8
+	
 AddType 'text/html; charset=utf-8' .html .htm .shtml
