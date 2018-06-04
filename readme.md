@@ -31,7 +31,14 @@ $ vagrant up
 $ vagrant ssh
 ```
 
-выполним миграции базы
+скопировать .env.example в .env
+
+сгенерим ключ
+```
+$ php artisan key:generate
+```
+
+выполним миграции базы (с заполенением --seed)
 ```
 $ php artisan migrate --seed
 ```
