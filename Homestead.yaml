@@ -1,0 +1,26 @@
+ip: 192.168.20.20
+memory: 2048
+cpus: 2
+provider: virtualbox
+mariadb: true
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    -
+        map: ~/back.mediastorage.test
+        to: /home/vagrant/code
+sites:
+    -
+        map: back.mediastorage.test
+        to: /home/vagrant/code/public
+        type: "apache"
+
+databases:
+    - homestead
+
+name: back-mediastorage-test
+hostname: back-mediastorage-test

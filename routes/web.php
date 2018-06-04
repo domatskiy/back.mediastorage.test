@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+
+Route::get('', function () {
+   return view('index');
 });
+
+
+# admin interfaces
+Route::resource('admin', 'AdminController')
+    ->only(['index', 'edit', 'update', 'destroy']);
+
+
+

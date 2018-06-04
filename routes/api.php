@@ -13,6 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('', function () {
+    return ['uploaded'];
+    });
+
+Route::get('uploaded/{user_hash}/{file_hash}', 'API\MediaStorageController@get');
+
+Route::middleware('msuser')->group(function () {
+    Route::post('upload', 'API\MediaStorageController@upload');
 });
